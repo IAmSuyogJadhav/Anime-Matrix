@@ -17,7 +17,7 @@ Pixel-perfect Anime Matrix GIFs created using Inkscape. These animations have be
 
 The template I used is included inside `Template/`. This is a modification of the template used by [Josh Walsh](https://blog.joshwalsh.me/asus-anime-matrix/). When opened inside InkScape, you will see two layers, namely `bg` and `Layer 1`. By default, `bg` is set to be transparent so that the grid drawn underneath is visible. Each of the squares in this grid correspond to exactly one of the LEDs on the back panel. So, as long as you draw using these squares, the final product will look 'clean' and sharp with no blurring. 
 
-Make sure to turn the opacity of the `bg` layer to 100 when you are finished drawing. Now export to PNG using the exact export settings shown in the included screenshot. You can create your own GIFs frame by frame and then combining into a single GIF file using `ffmpeg` or a similar program. 
+Make sure to turn the opacity of the `bg` layer to 100 when you are finished drawing. Now export to PNG using the exact export settings shown in the included screenshot. You can create your own GIFs frame by frame and then combine into a single GIF file using `ffmpeg` or a similar program. 
 
 ## Attribution
 
