@@ -1,0 +1,4 @@
+dasbus==1.6
+PyGObject==3.42.2
+numpy==1.20.2
+opencv_python==4.5.2.54
