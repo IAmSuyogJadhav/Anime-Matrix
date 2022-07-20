@@ -29,24 +29,15 @@ display_image(my_img)
 
 # Animation
 frames = 100
-my_animation = np.zeros((frames, 56, 35), dtype=np.uint8)
+my_animation = np.zeros((frames, 56, 35), dtype=np.uint8)  # Can also be a generator instead of a static sequence of images!
 display_animation(my_animation, fps=30)  # 30 frames per second
 ```
 
 # A sample dynamic Anime Matrix animation
 Currently working on a scrolling text display. It is a very basic implementation currently, with only horizontal scrolling support and the font looks a bit stretched out on the display. Will need to find appropriate fonts that work well in the future. Anyway, here's the current version of the demo:
 
-```python
-import numpy as np
-from main import display_animation
-from utils import scrolling_text_generator
-
-img = np.zeros((56, 35), dtype=np.uint8)
-start_x, start_y = img.shape[1], img.shape[0] // 2
-gen = scrolling_text_generator(img, "Hello World!", start_x, start_y, step_x=-1, fontScale=1, thickness=1)
-
-display_animation(gen, fps=14)
-# The text "Hello World!" will now keep scrolling from one end to the other in a loop till you press Ctrl + C and stop it
+```bash
+python demo_scrolling_text.py
 ```
 
 # Future Work

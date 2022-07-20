@@ -16,11 +16,12 @@ def scrolling_text_generator(img, text, start_x, start_y, step_x, fontFace=cv2.F
     """
     # Calculate last index based on the information provided
     end_x = (abs(step_x) / step_x) * cv2.getTextSize(text, fontFace, fontScale, thickness)[0][0]
-    xs = np.arange(start_x, end_x, step_x)
+    xs = np.arange(start_x, end_x, step_x, dtype=np.int)
 
     while True:
         try:
             for x in xs:
+                # print(x, type(x), start_y, type(start_y)) # DEBUG
                 img1 = cv2.putText(img.copy(), text, (x, start_y), fontFace, fontScale, color, thickness)
                 yield(img1)
         except KeyboardInterrupt:
