@@ -25,6 +25,21 @@ def get_dbus_proxy() -> ObjectProxy:
     return proxy
 
 
+def get_blank_image(rgb=False) -> np.ndarray:
+    """Returns a blank image in the correct shape.
+
+    Args:
+        rgb (bool): If True, the image will be of shape (56, 35, 3). If False, the image will be of shape (56, 35).
+
+    Returns:
+        np.ndarray: A blank image.
+    """
+    if rgb:
+        return np.zeros((led_height, led_width, 3), dtype=np.uint8)
+    else:
+        return np.zeros((led_height, led_width), dtype=np.uint8)
+
+
 def image_to_anime(img: np.ndarray) -> list:
     """Converts a NumPy array (containing the pixel art) to a ByteArray as needed by the Anime Matrix.
 
@@ -60,7 +75,8 @@ def write_to_display(proxy: ObjectProxy, anime_bytes: list):
         anime_bytes (list): The ByteArray to be sent to the Anime Matrix.   
     """
     # Write to the display
-    proxy.Write(anime_bytes)
+    # proxy.Write(anime_bytes)
+    proxy.Write((anime_bytes, 0))  # New format
 
 
 def display_image(img: np.ndarray, proxy: ObjectProxy = None):
