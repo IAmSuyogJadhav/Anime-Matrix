@@ -2,8 +2,9 @@ from dasbus.client.proxy import ObjectProxy
 from dasbus.connection import SystemMessageBus
 import numpy as np
 import time
+import os
 
-led_mask = np.load('led_mask_GA401.npy')
+led_mask = np.load(os.path.join(os.path.dirname(__file__), "led_mask_GA401.npy"))
 led_height = led_mask.shape[0]
 led_width = led_mask.shape[1]
 

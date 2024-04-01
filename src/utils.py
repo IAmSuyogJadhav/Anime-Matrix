@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import os
 
 # def scrolling_text_generator(img, text, start_x, start_y, step_x, fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.4, thickness=1, color=255):
 #     """Generates a scrolling text on the given image. Currently, only horizontal direction scrolling is supported.
@@ -29,7 +30,7 @@ import cv2
 
 def get_border_indices(top=True, bottom=True, left=True, right=True):
     border_indices = []
-    leds_mask = np.load("led_mask_GA401.npy")[..., 0]
+    leds_mask = np.load(os.path.join(os.path.dirname(__file__), "led_mask_GA401.npy"))[..., 0]
     if top:
         border_indices.extend([(0, j) for j in range(leds_mask.shape[1]) if leds_mask[0, j]])  # Add top border
     
@@ -87,7 +88,7 @@ def scrolling_text_generator(img, text, start_x, start_y, step_x, fontFace=cv2.F
 
     # Calculate last index based on the information provided
     end_x = (abs(step_x) / step_x) * cv2.getTextSize(text, fontFace, fontScale, thickness)[0][0]
-    xs = np.arange(start_x, end_x, step_x, dtype=np.int)
+    xs = np.arange(start_x, end_x, step_x, dtype=int)
 
     # Yield the animation frame by frame (effectively outputs an infinite number of looping frames)
     while True:
